@@ -6,22 +6,12 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 
 interface RetrofitInstance {
 
     @GET("users/{username}")
-    fun getUser(@Path("username") username: String): Call<List<Users>>
+    fun getUser(@Path("username") username:String ): Call<Users>
 
-}
-
-object DataRepository {
-
-    fun create(): RetrofitInstance {
-        val retrofit = Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl("https://github.com/")
-                .build()
-        return retrofit.create(RetrofitInstance::class.java)
-    }
 }

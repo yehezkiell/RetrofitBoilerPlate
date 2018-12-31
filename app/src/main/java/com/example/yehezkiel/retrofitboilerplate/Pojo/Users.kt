@@ -6,15 +6,16 @@ import com.google.gson.annotations.SerializedName
 
 open class Users {
 
-    @SerializedName("avatar_url")
-    @Expose
-    open var avatarUrl: String? = null
 
-    @SerializedName("name")
+    @SerializedName("id")
     @Expose
-    open var name: String? = null
+    open var id: Int? = null
 
-    @SerializedName("followers")
+    @SerializedName("username")
     @Expose
-    open var followers: Int? = null
+    open var username: String? = null
+
+    @SerializedName("email")
+    @Expose
+    open var email: String? = null
 }

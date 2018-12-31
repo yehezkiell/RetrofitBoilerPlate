@@ -17,20 +17,17 @@ class MainActivity : AppCompatActivity() {
 
         val postService = DataRepository.create()
 
-        postService.getUser("yehezkiell").enqueue(object : Callback<List<Users>>{
-            override fun onFailure(call: Call<List<Users>>?, t: Throwable?) {
-                Log.e("retrofitnya","gagal")
+        postService.getUser("yehezkiell").enqueue(object : Callback<Users>{
+            override fun onFailure(call: Call<Users>?, t: Throwable?) {
+                Log.e("retrofitnya","gagal ${t}")
             }
 
-            override fun onResponse(call: Call<List<Users>>?, response: Response<List<Users>>?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                Log.e("retrofitnya","berhasil")
+            override fun onResponse(call: Call<Users>?, response: Response<Users>?){
+                Log.e("retrofitnya",(response?.code().toString()))
 
                 val data = response?.body()
+                Log.e("retrofitnya","response body as string = ${data?.id}")
 
-                data?.map {
-                    Log.d("tag", "datanya ${it.followers}")
-                }
 
             }
 
